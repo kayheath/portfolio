@@ -1,0 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Courier, monospace
+}
+
+#home { background: #a3a380; }
+#about { background: #d6ce93; }
+#experience { background: #efebce; }
+#projects { background: #d8a48f; }
+#links { background: #bb8588; }
+#fun { background: #a3a380; }
