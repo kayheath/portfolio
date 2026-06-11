@@ -1,0 +1,80 @@
+.root {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  z-index: 50;
+
+  /* --frame (px) and --scale are set inline; one scaled frame = the box size. */
+  --box: calc(var(--frame) * var(--scale));
+  width: var(--box);
+  height: var(--box);
+
+  /* --p (0..1 scroll progress) and --face (1 | -1) are set inline.
+     Flip around the center so facing left doesn't shift the cat sideways. */
+  transform-origin: center;
+  transform: translateX(calc(var(--p) * (100vw - 100%))) scaleX(var(--face));
+
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.sprite {
+  width: var(--box);
+  height: var(--box);
+
+  /* --sheet (url), --frames, and --dur are set inline per animation. */
+  background: var(--sheet) no-repeat;
+  background-size: calc(var(--frames) * var(--box)) var(--box);
+  image-rendering: pixelated;
+}
+
+/* Looping animations (walk, run, idle, sit, sleep): cycle all frames forever. */
+.loop {
+  animation: play-loop var(--dur) steps(var(--frames)) infinite;
+}
+
+/* One-off animations (jump, liedown): play through once and hold the last frame. */
+.once {
+  animation: play-once var(--dur) steps(var(--frames), jump-none) forwards;
+}
+
+@keyframes play-loop {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: calc(-1 * var(--frames) * var(--box));
+  }
+}
+
+@keyframes play-once {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: calc(-1 * (var(--frames) - 1) * var(--box));
+  }
+}
+
+/* Light mode (Latte): the near-white cat needs a soft shadow to stay legible. */
+:global([data-theme='light']) .sprite {
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.35));
+}
+
+/* Hide on small screens — a fixed cat crowds narrow layouts. */
+@media (max-width: 640px) {
+  .root {
+    display: none;
+  }
+}
+
+/* Reduced motion: park a static sitting cat, no movement or frame cycling. */
+@media (prefers-reduced-motion: reduce) {
+  .root.static {
+    transform: translateX(16px);
+  }
+  .root.static .sprite {
+    animation: none;
+    background-position-x: 0;
+  }
+}

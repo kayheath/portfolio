@@ -1,0 +1,76 @@
+@import url('https://googleapis.com');
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Design tokens: Catppuccin Frappé (https://catppuccin.com/palette) ---- */
+:root {
+  /* Surfaces */
+  --color-bg: #303446;       /* base   — page background */
+  --color-surface: #292c3c;  /* mantle — inner window / cards */
+  --color-border: #232634;   /* crust  — borders */
+
+  /* Text */
+  --color-text: #c6d0f5;        /* text     — body + main headlines */
+  --color-subtext: #b5bfe2;     /* subtext1 — sub-headings/labels */
+  --color-text-muted: #a5adce;  /* subtext0 — muted/secondary text */
+
+  /* Accents */
+  --color-accent: #babbf1;       /* lavender — active/interactive */
+  --color-accent-alt: #ca9ee6;   /* mauve    — secondary accent */
+
+  --font-body: 'Victor Mono', monospace;
+  --font-heading: var(--font-body);
+
+  --space-section: clamp(3rem, 8vw, 6rem);
+  --max-content-width: 720px;
+
+  /* Keeps pixel art crisp when scaled — handy once the cat sprite lands. */
+  --image-rendering: pixelated;
+}
+
+/* ---- Light mode: Catppuccin Latte (opt-in via toggle; Frappé is default) ---- */
+[data-theme='light'] {
+  --color-bg: #eff1f5;       /* base   */
+  --color-surface: #e6e9ef;  /* mantle */
+  --color-border: #dce0e8;   /* crust  */
+
+  --color-text: #4c4f69;        /* text     */
+  --color-subtext: #5c5f77;     /* subtext1 */
+  --color-text-muted: #6c6f85;  /* subtext0 */
+
+  --color-accent: #7287fd;       /* lavender */
+  --color-accent-alt: #8839ef;   /* mauve    */
+}
+
+/* ---- Base ---- */
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-accent);
+}
