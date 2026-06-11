@@ -52,7 +52,7 @@ export default function App() {
       <Section title="Experience">
         <div className={styles.stack}>
           {EXPERIENCE.map((item) => (
-            <ExperienceItem key={`${item.org}-${item.role}`} item={item} />
+            <ExperienceItem key={`${item.org}-${item.roles[0].title}`} item={item} />
           ))}
         </div>
       </Section>
