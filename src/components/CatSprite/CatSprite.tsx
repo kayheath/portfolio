@@ -1,29 +1,12 @@
-import { useEffect, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { FRAME_SIZE, SPRITES } from '../../sprites/catSprites'
 import { useScroll } from '../../hooks/useScroll'
 import { useCatState } from '../../hooks/useCatState'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import styles from './CatSprite.module.css'
 
 // Integer scale keeps the pixel art crisp. 40px × 3 = 120px cat.
 const SCALE = 3
-
-const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia(REDUCED_MOTION_QUERY).matches,
-  )
-  useEffect(() => {
-    const mq = window.matchMedia(REDUCED_MOTION_QUERY)
-    const update = () => setReduced(mq.matches)
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-  return reduced
-}
 
 /**
  * The scroll-driven pixel cat. Lives fixed at the bottom of the viewport: idles

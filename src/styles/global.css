@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem; /* clear the sticky nav when jumping to a section */
 }
 
 /* ---- Design tokens: Catppuccin Frappé (https://catppuccin.com/palette) ---- */
@@ -31,6 +32,7 @@ html {
 
   --font-body: 'Victor Mono', monospace;
   --font-heading: var(--font-body);
+  --font-pixel: 'Press Start 2P', 'Victor Mono', monospace;
 
   --space-section: clamp(3rem, 8vw, 6rem);
   --max-content-width: 720px;

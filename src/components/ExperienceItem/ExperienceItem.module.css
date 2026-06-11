@@ -1,0 +1,60 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.role {
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.org {
+  color: var(--color-accent);
+}
+
+.status {
+  flex-shrink: 0;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.active {
+  color: var(--color-bg);
+  background: var(--color-accent);
+}
+
+.done {
+  color: var(--color-text-muted);
+  box-shadow: inset 0 0 0 2px var(--color-border);
+}
+
+.dates {
+  margin: 0.5rem 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.objectives {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.objectives li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--color-subtext);
+}
+
+.objectives li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}

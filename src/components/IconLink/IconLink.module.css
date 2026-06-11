@@ -1,0 +1,52 @@
+.link {
+  --u: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-surface);
+
+  /* Notched pixel button (same technique as Panel). */
+  clip-path: polygon(
+    0 var(--u),
+    var(--u) var(--u),
+    var(--u) 0,
+    calc(100% - var(--u)) 0,
+    calc(100% - var(--u)) var(--u),
+    100% var(--u),
+    100% calc(100% - var(--u)),
+    calc(100% - var(--u)) calc(100% - var(--u)),
+    calc(100% - var(--u)) 100%,
+    var(--u) 100%,
+    var(--u) calc(100% - var(--u)),
+    0 calc(100% - var(--u))
+  );
+  box-shadow: inset 0 0 0 var(--u) var(--color-border);
+  transition: color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 var(--u) var(--color-accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* The ▶ selector slides in on hover/focus, like a game menu cursor. */
+.cursor {
+  color: var(--color-accent);
+  opacity: 0;
+  width: 0;
+  margin-right: -0.5rem;
+  transition: opacity 0.15s ease;
+}
+
+.link:hover .cursor,
+.link:focus-visible .cursor {
+  opacity: 1;
+  width: auto;
+  margin-right: 0;
+}

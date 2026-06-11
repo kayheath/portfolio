@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.school {
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.degree {
+  color: var(--color-accent);
+}
+
+.gpa {
+  flex-shrink: 0;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 2px var(--color-accent);
+}
+
+.term {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.honors {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.badge {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-subtext);
+  box-shadow: inset 0 0 0 2px var(--color-border);
+}
